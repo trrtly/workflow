@@ -75,6 +75,7 @@
 
 ### 3 简化后的流程
 取消 fork
+
 - 开发人员从主仓库 origin/develop　分支 checkout　自己的功能分支 feature/example
 - 开发人员在本地完成　feature/example 功能开发后 push 至　origin feature/example　分支，镜像测试
 - ci 运行单元测试、代码风格检测等构建步骤，并构建镜像 test.epweike.net:example
