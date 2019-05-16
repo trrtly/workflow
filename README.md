@@ -4,7 +4,7 @@
 
 ## 目录
 
-- [项目新人上手教程]()
+- [项目新人上手教程](quick-start/quick-start.md)
 - [一品威客`gitflow`工作流]()
 - [`git commit`约定式提交规范](git/how-to-commit.md)
 - [`PHP`项目编码规范]()
