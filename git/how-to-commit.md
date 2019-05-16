@@ -6,13 +6,13 @@
 
 - [关于「能愿动词」的使用](#关于能愿动词的使用)
 - [约定式提交规范](#约定式提交规范)
-  - [「头部」](#头部)
-    - [「类型」](#类型)
-    - [「作用域」](#作用域)
-    - [「描述」](#描述)
+  - [「头部」](#「头部」)
+    - [「类型」](#「类型」)
+    - [「作用域」](#「作用域」)
+    - [「描述」](#「描述」)
     - [头部示例](#头部示例)
-  - [「正文」](#正文)
-  - [「脚注」](#脚注)
+  - [「正文」](#「正文」)
+  - [「脚注」](#「脚注」)
 - [为什么使用约定式提交](#为什么使用约定式提交)
 - [FAQ](#FAQ)
 - [参考文档](#参考文档)
@@ -136,24 +136,25 @@ fix(user.login): 修改用户登录逻辑，以解决密码错误验证上限不
 
   示例，摘抄自 [`angular` 提交历史](https://github.com/angular/angular.js/commit/73c6467f1468353215dc689c019ed83aa4993c77)：
 
->  BREAKING CHNAGE:
->
->  移除 `$cookieStore` 变量，迁移至 `$cookie` 服务。注意：
->  对象值，需要使用`putObject`和`getObject`方法进行`get` /    >  `put`操作，否则将无法正确保存/检索它们。
->
->  修改前：
->  ```js
->  $cookieStore.put('name', {key: 'value'});
->  $cookieStore.get('name'); // {key: 'value'}
->  $cookieStore.remove('name');
->  ```
->
->  修改后：
->  ```js
->  $cookies.putObject('name', {key: 'value'});
->  $cookies.getObject('name'); // {key: 'value'}
->  $cookies.remove('name');
->  ```
+
+```
+BREAKING CHNAGE:
+
+移除 `$cookieStore` 变量，迁移至 `$cookie` 服务。注意：
+对象值，需要使用`putObject`和`getObject`方法进行`get`、`put`操作，否则将无法正确保存、检索它们。
+
+修改前：
+
+$cookieStore.put('name', {key: 'value'});
+$cookieStore.get('name'); // {key: 'value'}
+$cookieStore.remove('name');
+
+修改后：
+
+$cookies.putObject('name', {key: 'value'});
+$cookies.getObject('name'); // {key: 'value'}
+$cookies.remove('name');
+```
 
 
 - 关闭 `Issue`
