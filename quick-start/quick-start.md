@@ -169,61 +169,47 @@ git reset
 ```
 git clone http://git.epweike.net:3000/epwk/docker_vagrant_centos7
 cd docker_vagrant_centos7
-vagrant box add http://ftp.epweike.net/incoming/epwkdev/epwk-centos7.box --name epwk-centos7
-vagrant up
+
+# windows 以管理员运行 init.bat
+# linux 安装 NFS 服务后执行 init.sh
 ```
 
-首次启动需要加载 「vbox 增强工具」可能有点慢，可以先看一下其他文档，启动成功：
+首次启动需要加载可能有点慢，启动成功：
 
 ![vagrant up](../images/quick-start-vagrant-up.png)
 
 ### 获取项目代码
 
-Vagrant 启动成功时会生成一个 `webroot` 目录，我们规定项目 `必须` 检出到 `webroot` 目录下。
-
-登录 [gogs](http://git.epweike.net:3000/) 代码管理平台，找到需要的项目，这里以 `http://git.epweike.net:3000/suyaqi/teach.epweike.net` 项目为范例（laravel 5.8）：
+进入到虚拟机里：
 
 ```
-cd webroot
-git clone http://git.epweike.net:3000/suyaqi/teach.epweike.net.git
-cd teach.epweike.net
-git checkout -b develop origin/develop
+# 进到本机的项目底下
+cd docker_vagrant_centos7
+# ssh 连接虚拟机
+vagrant ssh
+# 在虚拟机的启动预装的环境（nginx/php等）
+docker-compose up -d
 ```
+
+Vagrant 启动成功时会挂载 `/data/webroot` 目录到你本机，我们规定项目 `必须` 检出到 `/data/webroot` 目录下。
+
+为了方便的检出和配置项目，我们会在 vagrant 的 `/data/scripts` 创建一键搭建本地环境的脚本，这个需要大家共同维护。
+
+以下以 teach.epweike.net 为例：
+
+```
+/data/scripts/teach.epweike.net.sh
+```
+
+脚本执行过程可能要求你输入 GIT 的账号密码，脚本执行完成后，项目就在本地部署完成了。
 
 ![git clone](../images/quick-start-get-code.png)
 
 ### 运行项目
 
-代码检出后，登录虚拟机做一些准备来运行代码：
+`/data/scripts/teach.epweike.net.sh` 脚本执行了检出代码、安装composer、复制nginx配置文件、重启nginx操作。
 
-```
-vagrant ssh
-cp /data/nginx/vhost/teach.epweike.me.conf.example /data/nginx/vhost/teach.epweike.me.conf
-```
-
-在 `/data/nginx/vhost` 目录底下，我们将提供尽可能全的项目的 Nginx 配置文件，并且以 `.example` 结尾，如果你需要某个项目的配置文件，`必须` 拷贝一份并且重命名去掉 `.example`，`一定不可` 直接重命名。
-
-如果代码需要 `composer` 安装，则 `应该` 使用：
-
-```
-cd /data/webroot/teach.epweike.net/
-composer install --ignore-platform-reqs
-composer run-script post-root-package-install // 创建 `.env` 文件，这个要根据具体项目判断是否执行
-composer run-script post-create-project-cmd // 创建应用秘钥，这个要根据具体项目判断是否执行
-```
-
-![composer-install](../images/quick-start-composer-install.png)
-
-启动容器：
-
-```
-cd /data/
-docker-compose up -d
-```
-
-![docker-compose](../images/quick-start-docker-compose.png)
-
-最后，`应该` 配置本机 host 来访问项目：
+我们现在只需配置本机 host 来访问项目：
 
 ![host](../images/quick-start-host.png)
 
