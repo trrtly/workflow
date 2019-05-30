@@ -71,7 +71,7 @@
 示例：
 
 ```
-revert: feat(user.login): 添加用户登录功能
+revert: feat(controller.user): 添加用户登录功能
 ```
 
 #### 「作用域」
@@ -80,7 +80,7 @@ revert: feat(user.login): 添加用户登录功能
 
 示例：
 ```
-user.login
+controller.user
 ```
 
 #### 「描述」
@@ -94,7 +94,7 @@ user.login
 示例：
 
 ```
-添加 `task:stat` 定时任务，用以统计威客平台任务数 
+添加 `task:stat` 定时任务，统计威客平台任务数 
 ```
 
 #### 头部示例
@@ -102,13 +102,13 @@ user.login
 不包含「作用域」的「头部」：
 
 ```
-feat: 添加 `task:stat` 定时任务，用以统计威客平台任务数
+feat: 添加 `task:stat` 定时任务，统计威客平台任务数
 ```
 
 包含「作用域」的「头部」：
 
 ```
-fix(user.login): 修改用户登录逻辑，以解决密码错误验证上限不正确的问题
+fix(command.task): 定时任务，统计威客平台任务数
 ```
 
 ### 「正文」
@@ -118,12 +118,21 @@ fix(user.login): 修改用户登录逻辑，以解决密码错误验证上限不
 - `必须` 以动词开头，使用第一人称现在时，例如使用 `修改` 而不是 `修改了` 或者 `一些修改`
 - `应该` 使用中文，且中文文案排版 `必须` 符合 [「中文文案排版指北」](https://github.com/sparanoid/chinese-copywriting-guidelines/blob/master/README.zh-CN.md)
 - `应该` 包含这次变化的动机以及与之前行为的对比
-- `必须` 符合 [`Markdown`](https://markdown.cn/) 语法
+- `可以` 符合 [`Markdown`](https://markdown.cn/) 语法
 
 示例：
 
 ```
+修改用户身份验证方式，从 `SESSION` 迁移至 `JWT`。注意：
+用户信息，需要使用`JWTGuard`进行操作，否则将无法正确获取、修改。
 
+修改前：
+
+$user = Illuminate\Auth\SessionGuard->user()
+
+修改后：
+
+$user = Illuminate\Auth\JWTGuard->user()
 ```
 
 ### 「脚注」
@@ -134,26 +143,22 @@ fix(user.login): 修改用户登录逻辑，以解决密码错误验证上限不
 
   如果当前提交的代码与上一个版本不兼容，`必须` 在「脚注」中给出说明，内容包含：对变动的描述、变动理由和迁移方法;以 `BREAKING CHANGE`开头。
 
-  示例，摘抄自 [`angular` 提交历史](https://github.com/angular/angular.js/commit/73c6467f1468353215dc689c019ed83aa4993c77)：
+  参考 [`angular` 提交历史](https://github.com/angular/angular.js/commit/73c6467f1468353215dc689c019ed83aa4993c77)：
 
 
 ```
-BREAKING CHNAGE:
+BREAKING CHANGE:
 
-移除 `$cookieStore` 变量，迁移至 `$cookie` 服务。注意：
-对象值，需要使用`putObject`和`getObject`方法进行`get`、`put`操作，否则将无法正确保存、检索它们。
+修改用户身份验证方式，从 `SESSION` 迁移至 `JWT`。注意：
+用户信息，需要使用`JWTGuard`进行操作，否则将无法正确获取、修改。
 
 修改前：
 
-$cookieStore.put('name', {key: 'value'});
-$cookieStore.get('name'); // {key: 'value'}
-$cookieStore.remove('name');
+$user = Illuminate\Auth\SessionGuard->user()
 
 修改后：
 
-$cookies.putObject('name', {key: 'value'});
-$cookies.getObject('name'); // {key: 'value'}
-$cookies.remove('name');
+$user = Illuminate\Auth\JWTGuard->user()
 ```
 
 
