@@ -138,7 +138,7 @@ fix(user.login): 修改用户登录逻辑，以解决密码错误验证上限不
 
 
 ```
-BREAKING CHNAGE:
+BREAKING CHANGE:
 
 移除 `$cookieStore` 变量，迁移至 `$cookie` 服务。注意：
 对象值，需要使用`putObject`和`getObject`方法进行`get`、`put`操作，否则将无法正确保存、检索它们。
