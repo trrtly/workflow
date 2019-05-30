@@ -134,26 +134,22 @@ fix(user.login): 修改用户登录逻辑，以解决密码错误验证上限不
 
   如果当前提交的代码与上一个版本不兼容，`必须` 在「脚注」中给出说明，内容包含：对变动的描述、变动理由和迁移方法;以 `BREAKING CHANGE`开头。
 
-  示例，摘抄自 [`angular` 提交历史](https://github.com/angular/angular.js/commit/73c6467f1468353215dc689c019ed83aa4993c77)：
+  参考 [`angular` 提交历史](https://github.com/angular/angular.js/commit/73c6467f1468353215dc689c019ed83aa4993c77)：
 
 
 ```
 BREAKING CHANGE:
 
-移除 `$cookieStore` 变量，迁移至 `$cookie` 服务。注意：
-对象值，需要使用`putObject`和`getObject`方法进行`get`、`put`操作，否则将无法正确保存、检索它们。
+修改用户身份验证方式，从 `SESSION` 迁移至 `JWT`。注意：
+用户信息，需要使用`JWTGuard`进行操作，否则将无法正确获取、修改。
 
 修改前：
 
-$cookieStore.put('name', {key: 'value'});
-$cookieStore.get('name'); // {key: 'value'}
-$cookieStore.remove('name');
+$user = Illuminate\Auth\SessionGuard->user()
 
 修改后：
 
-$cookies.putObject('name', {key: 'value'});
-$cookies.getObject('name'); // {key: 'value'}
-$cookies.remove('name');
+$user = Illuminate\Auth\JWTGuard->user()
 ```
 
 
