@@ -108,7 +108,7 @@ feat: 添加 `task:stat` 定时任务，统计威客平台任务数
 包含「作用域」的「头部」：
 
 ```
-fix(command.task): 定时任务，统计威客平台任务数
+feat(command.task): 添加 `task:stat` 定时任务，统计威客平台任务数
 ```
 
 ### 「正文」
