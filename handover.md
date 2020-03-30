@@ -818,7 +818,7 @@ Key 4: U0UQGdCmhJAgTTm25CNLUxJ1fE8y9gpdICO3wwS1DTbC
 Key 5: +NUoY1iAxW3OE0P7z+k8z+Bz3EhMf/V4/6J/+0TLiEoI
 ```
 
-### 华为云 swr
+### 华为云swr
 
 - [获取长期有效docker login指令](https://support.huaweicloud.com/usermanual-swr/swr_01_1000.html)
 
@@ -834,7 +834,7 @@ abcc4794a611494ef9636462fbf83c0b48e915544c0f03a739c252ab24bd432a
 docker login -u cn-east-2@IPPKKR51ZJLDLJFIFTNH -p abcc4794a611494ef9636462fbf83c0b48e915544c0f03a739c252ab24bd432a swr.cn-east-2.myhuaweicloud.com
 ```
 
-## jenkins 信息
+## jenkins信息
 
 华为云 jenkins 登录地址
 
@@ -849,13 +849,13 @@ epwk
 wnhiz1offorwppmg
 ```
 
-## k8s 基本配置与使用
+## k8s基本配置与使用
 
-### k8s 简介
+### k8s简介
 
 详见:[官网文档](https://kubernetes.io/zh/docs/home/)
 
-### 常用 service 模版
+### 常用service模版
 
 官网文档详见: https://kubernetes.io/zh/docs/concepts/services-networking/service/
 
