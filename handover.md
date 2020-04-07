@@ -15,6 +15,7 @@
     - [drone插件说明](#drone插件说明)
     - [密钥管理 `vault`](#密钥管理vault)
     - [华为云 `swr`](#华为云swr)
+    - [常用`dockerfile`](#常用dockerfile)
 - [`jenkins` 信息](#jenkins信息)
 - [`k8s` 基本配置与使用](#k8s基本配置与使用)
     - [`k8s` 简介](#k8s简介)
@@ -833,6 +834,10 @@ abcc4794a611494ef9636462fbf83c0b48e915544c0f03a739c252ab24bd432a
 ```
 docker login -u cn-east-2@IPPKKR51ZJLDLJFIFTNH -p abcc4794a611494ef9636462fbf83c0b48e915544c0f03a739c252ab24bd432a swr.cn-east-2.myhuaweicloud.com
 ```
+
+### 常用dockerfile
+
+见项目:http://git.epweike.net/epwk/dockerfile
 
 ## jenkins信息
 
